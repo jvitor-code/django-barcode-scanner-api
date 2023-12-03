@@ -1,0 +1,23 @@
+# Arquivos de configuração do sistema
+db.sqlite3
+.env
+
+# Arquivos compilados
+*.pyc
+__pycache__/
+
+# Arquivos de ambiente
+.env
+
+# Diretórios de ambiente virtual
+env/
+
+# Dependências Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs e arquivos temporários
+logs/
+*.log
