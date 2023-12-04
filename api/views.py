@@ -3,6 +3,7 @@
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from .models import Barcode
 from .serializers import BarcodeSerializer
 from PIL import Image
@@ -12,8 +13,9 @@ from pyzbar.pyzbar import decode
 class BarcodeViewSet(viewsets.ModelViewSet):
     queryset = Barcode.objects.all()
     serializer_class = BarcodeSerializer
+    permission_classes=[IsAuthenticated]
 
-    @action(detail=False, methods=['post'])
+    @action(detail=False, methods=['post'])  # Adicionado para autenticação JWT
     def scan(self, request):
         image = request.FILES['image']
         barcode_number, barcode_type = self.decode_barcode(image)
